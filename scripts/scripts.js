@@ -18,12 +18,24 @@ import {
  * @param {Element} main The container element
  */
 function buildHeroBlock(main) {
+
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
+  const tagline = main.querySelector('h1 + p'); // Could probably be more robust
+  const button = (tagline) ? tagline.querySelector('a') : undefined; // Could probably be more robust
+  let buttonContainer = undefined;
+
+  if (button) { 
+    buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+    button.classList.add('button'); 
+    buttonContainer.appendChild(button)
+  }
+
   // eslint-disable-next-line no-bitwise
   if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
+    section.append(buildBlock('banner', { elems: [picture, h1, tagline, buttonContainer] }));
     main.prepend(section);
   }
 }

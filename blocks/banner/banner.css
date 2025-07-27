@@ -1,0 +1,103 @@
+
+
+.banner-container { 
+  position: relative;
+  margin: 0;
+  z-index: 1;
+}
+
+/* More specificity to override the globals */
+.banner-container  .banner-wrapper {
+  position: relative;
+  max-width: none; 
+  padding: 0;
+}
+
+.banner {
+  overflow: hidden;
+}
+
+.banner .background-wrapper {
+  position: relative;
+  min-height: 300px;
+}
+
+.banner picture,
+.banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
+.banner .inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--col-padding);
+}
+
+.banner .card {
+  position: relative;
+  z-index: 2;
+
+  margin-top: -100px;
+
+  border-radius: var(--border-radius);
+  overflow: hidden;
+
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: 3;
+    background-color: var(--test-brand-dark);
+  }
+}
+
+.banner .card .card-content {
+  position: relative;
+  padding: 32px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+}
+
+.banner .card h1 {
+  margin: 0;
+  font-size: 1.8125rem;
+}
+
+.banner .card p {
+  margin: 16px 0 0;
+}
+
+.banner .card .button-container {
+  margin: 16px 0 0;
+}
+
+
+@media (min-width: 900px) {
+
+  .banner .background-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .banner .card {
+    width: 50%;
+    max-width: 568px;
+    margin: 120px 0;
+    margin-left: auto;  
+  }
+}
